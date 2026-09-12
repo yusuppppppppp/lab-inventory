@@ -10,5 +10,12 @@ export type User = {
 };
 
 export type Auth = {
-    user: User;
+    user: User | null;
+};
+
+export type SharedData = {
+    name: string;
+    auth: Auth;
+    sidebarOpen: boolean;
+    [key: string]: unknown;
 };

@@ -1,9 +1,10 @@
 import { usePage } from '@inertiajs/react';
 
 import AppLogoIcon from '@/components/app-logo-icon';
+import type { SharedData } from '@/types';
 
 export default function AppLogo() {
-    const { name } = usePage().props;
+    const { name } = usePage<SharedData>().props;
 
     return (
         <>
