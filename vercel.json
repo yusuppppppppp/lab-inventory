@@ -10,7 +10,7 @@
             "dest": "/api/index.php"
         }
     ],
-    "buildCommand": "composer install --no-dev --optimize-autoloader && npm ci && npm run build && php artisan wayfinder:generate --with-form",
+    "buildCommand": "npm ci && npm run build",
     "outputDirectory": "public",
     "env": {
         "APP_ENV": "production",
