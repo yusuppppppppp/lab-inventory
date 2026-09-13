@@ -24,7 +24,9 @@ export default defineConfig({
             presets: [reactCompilerPreset()],
         }),
         tailwindcss(),
-        ...(process.env.VERCEL ? [] : [wayfinder({ formVariants: true })]),
+        wayfinder({
+            formVariants: true,
+        }),
     ]),
     server: {
         watch: {
