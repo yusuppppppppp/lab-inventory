@@ -24,9 +24,8 @@ export default defineConfig({
             presets: [reactCompilerPreset()],
         }),
         tailwindcss(),
-        wayfinder({
-            formVariants: true,
-        }),
+        // Disable wayfinder on Vercel (no php available during vite build, files already committed)
+        ...(process.env.VERCEL ? [] : [wayfinder({ formVariants: true })]),
     ]),
     server: {
         watch: {
