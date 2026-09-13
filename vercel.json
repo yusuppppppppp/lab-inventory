@@ -10,7 +10,7 @@
             "dest": "/api/index.php"
         }
     ],
-    "buildCommand": "npm ci && npm run build",
+    "buildCommand": "pnpm run build",
     "outputDirectory": "public",
     "env": {
         "APP_ENV": "production",
