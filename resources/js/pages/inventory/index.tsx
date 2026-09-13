@@ -67,113 +67,136 @@ export default function InventoryIndex({ items }: { items: PaginatedItems }) {
     return (
         <>
             <Head title="Inventory" />
-            <section className="flex w-full flex-col justify-stretch gap-15 p-10">
-                <div className="flex w-full flex-col justify-between gap-10 align-top">
-                    <h1 className="text-accent-foreground text-2xl font-bold capitalize">
+            <section className="flex w-full flex-col justify-stretch gap-6 p-4 sm:gap-8 sm:p-6 lg:p-10">
+                <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <h1 className="text-accent-foreground text-xl font-bold capitalize sm:text-2xl">
                         Inventory
                     </h1>
-                    <div className="flex w-full items-start justify-end">
-                        <Link href={create()}>
-                            <Button className="capitalize">new item</Button>
+                    <div className="flex w-full items-start justify-end sm:w-auto">
+                        <Link href={create()} className="w-full sm:w-auto">
+                            <Button className="w-full capitalize sm:w-auto">
+                                new item
+                            </Button>
                         </Link>
                     </div>
                 </div>
 
-                <Table className="overflow-hidden rounded-sm">
-                    <TableHeader className="bg-secondary">
-                        <TableRow>
-                            <TableHead className="capitalize">code</TableHead>
-                            <TableHead className="capitalize">name</TableHead>
-                            <TableHead className="capitalize">
-                                category
-                            </TableHead>
-                            <TableHead className="capitalize">qty</TableHead>
-                            <TableHead className="capitalize">
-                                condition
-                            </TableHead>
-                            <TableHead className="capitalize">
-                                location
-                            </TableHead>
-                            <TableHead className="capitalize">
-                                received at
-                            </TableHead>
-                            <TableHead className="capitalize">action</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {items.data.length === 0 ? (
+                <div className="overflow-x-auto rounded-sm border">
+                    <Table className="min-w-[800px] overflow-hidden">
+                        <TableHeader className="bg-secondary">
                             <TableRow>
-                                <TableCell
-                                    colSpan={8}
-                                    className="text-muted-foreground p-8 text-center"
-                                >
-                                    No items found.
-                                </TableCell>
+                                <TableHead className="capitalize">
+                                    code
+                                </TableHead>
+                                <TableHead className="capitalize">
+                                    name
+                                </TableHead>
+                                <TableHead className="capitalize">
+                                    category
+                                </TableHead>
+                                <TableHead className="capitalize">
+                                    qty
+                                </TableHead>
+                                <TableHead className="capitalize">
+                                    condition
+                                </TableHead>
+                                <TableHead className="capitalize">
+                                    location
+                                </TableHead>
+                                <TableHead className="capitalize">
+                                    received at
+                                </TableHead>
+                                <TableHead className="capitalize">
+                                    action
+                                </TableHead>
                             </TableRow>
-                        ) : (
-                            items.data.map((item) => (
-                                <TableRow key={item.id} className="border-t">
-                                    <TableCell className="bg-secondary/30 font-mono text-xs">
-                                        {item.code}
-                                    </TableCell>
-                                    <TableCell className="bg-secondary/30 w-[15%]">
-                                        {item.name}
-                                    </TableCell>
-                                    <TableCell className="bg-secondary/30">
-                                        {item.category}
-                                    </TableCell>
-                                    <TableCell className="bg-secondary/30 text-center">
-                                        {item.quantity}
-                                    </TableCell>
-                                    <TableCell className="bg-secondary/30">
-                                        <Badge
-                                            variant={
-                                                conditionVariant[item.condition]
-                                            }
-                                            className="capitalize"
-                                        >
-                                            {conditionLabel[item.condition]}
-                                        </Badge>
-                                    </TableCell>
-                                    <TableCell className="bg-secondary/30">
-                                        {item.location}
-                                    </TableCell>
-                                    <TableCell className="bg-secondary/30 text-xs">
-                                        {item.received_at
-                                            ? new Date(
-                                                  item.received_at,
-                                              ).toLocaleDateString()
-                                            : '-'}
-                                    </TableCell>
-                                    <TableCell className="bg-secondary/30 flex gap-2">
-                                        <Link href={edit(item.id)}>
-                                            <Button
-                                                variant="secondary"
-                                                className="capitalize"
-                                            >
-                                                edit
-                                            </Button>
-                                        </Link>
-                                        <Button
-                                            onClick={() =>
-                                                router.delete(destroy(item.id))
-                                            }
-                                            variant="destructive"
-                                            className="capitalize"
-                                        >
-                                            delete
-                                        </Button>
+                        </TableHeader>
+                        <TableBody>
+                            {items.data.length === 0 ? (
+                                <TableRow>
+                                    <TableCell
+                                        colSpan={8}
+                                        className="text-muted-foreground p-8 text-center"
+                                    >
+                                        No items found.
                                     </TableCell>
                                 </TableRow>
-                            ))
-                        )}
-                    </TableBody>
-                </Table>
+                            ) : (
+                                items.data.map((item) => (
+                                    <TableRow
+                                        key={item.id}
+                                        className="border-t"
+                                    >
+                                        <TableCell className="bg-secondary/30 font-mono text-xs">
+                                            {item.code}
+                                        </TableCell>
+                                        <TableCell className="bg-secondary/30 w-[15%] text-sm">
+                                            {item.name}
+                                        </TableCell>
+                                        <TableCell className="bg-secondary/30 text-sm">
+                                            {item.category}
+                                        </TableCell>
+                                        <TableCell className="bg-secondary/30 text-center text-sm">
+                                            {item.quantity}
+                                        </TableCell>
+                                        <TableCell className="bg-secondary/30">
+                                            <Badge
+                                                variant={
+                                                    conditionVariant[
+                                                        item.condition
+                                                    ]
+                                                }
+                                                className="text-xs capitalize"
+                                            >
+                                                {conditionLabel[item.condition]}
+                                            </Badge>
+                                        </TableCell>
+                                        <TableCell className="bg-secondary/30 text-sm">
+                                            {item.location}
+                                        </TableCell>
+                                        <TableCell className="bg-secondary/30 text-xs">
+                                            {item.received_at
+                                                ? new Date(
+                                                      item.received_at,
+                                                  ).toLocaleDateString('id-ID')
+                                                : '-'}
+                                        </TableCell>
+                                        <TableCell className="bg-secondary/30">
+                                            <div className="flex flex-wrap gap-2">
+                                                <Link href={edit(item.id)}>
+                                                    <Button
+                                                        variant="secondary"
+                                                        size="sm"
+                                                        className="capitalize"
+                                                    >
+                                                        edit
+                                                    </Button>
+                                                </Link>
+                                                <Button
+                                                    onClick={() =>
+                                                        router.delete(
+                                                            destroy(item.id),
+                                                        )
+                                                    }
+                                                    variant="destructive"
+                                                    size="sm"
+                                                    className="capitalize"
+                                                >
+                                                    delete
+                                                </Button>
+                                            </div>
+                                        </TableCell>
+                                    </TableRow>
+                                ))
+                            )}
+                        </TableBody>
+                    </Table>
+                </div>
 
                 {items.last_page > 1 && (
-                    <div className="flex flex-col items-center gap-4">
-                        <Pagination>
-                            <PaginationContent>
+                    <div className="flex max-w-full flex-col items-center gap-4 overflow-x-auto">
+                        <Pagination className="max-w-full">
+                            <PaginationContent className="flex-wrap justify-center">
                                 <PaginationItem>
                                     {items.prev_page_url ? (
                                         <Link

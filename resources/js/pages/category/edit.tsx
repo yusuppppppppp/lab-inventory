@@ -12,9 +12,9 @@ export default function Edit({ category }: { category: Category }) {
     return (
         <>
             <Head title="Edit Category" />
-            <section className="flex h-full w-full flex-col items-center justify-center">
-                <div className="bg-secondary/30 flex flex-col items-start justify-start gap-7 rounded-2xl p-8">
-                    <h1 className="text-accent-foreground text-2xl font-bold capitalize">
+            <section className="flex min-h-[calc(100vh-200px)] w-full flex-col items-center justify-center p-4 sm:p-6">
+                <div className="bg-secondary/30 flex w-full max-w-md flex-col items-start justify-start gap-7 rounded-2xl p-6 sm:p-8">
+                    <h1 className="text-accent-foreground text-xl font-bold capitalize sm:text-2xl">
                         edit category
                     </h1>
                     <Form
@@ -23,8 +23,8 @@ export default function Edit({ category }: { category: Category }) {
                     >
                         {({ processing, errors }) => (
                             <>
-                                <div className="flex h-full w-full flex-col items-start justify-start gap-7">
-                                    <FieldGroup className="w-85">
+                                <div className="flex h-full w-full flex-col items-start justify-start gap-6 sm:gap-7">
+                                    <FieldGroup className="w-full">
                                         <FieldSet className="flex flex-col items-start justify-start gap-5">
                                             <div className="flex w-full flex-col items-start justify-start gap-3">
                                                 <FieldLabel>Name</FieldLabel>
