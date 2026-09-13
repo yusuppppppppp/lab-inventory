@@ -298,10 +298,6 @@ export default function InventoryIndex({ items }: { items: PaginatedItems }) {
                                 </PaginationItem>
                             </PaginationContent>
                         </Pagination>
-                        <p className="text-muted-foreground text-sm">
-                            Showing {items.from} to {items.to} of {items.total}{' '}
-                            items
-                        </p>
                     </div>
                 )}
             </section>

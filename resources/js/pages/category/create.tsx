@@ -1,11 +1,7 @@
 import CategoryController from '@/actions/App/Http/Controllers/CategoryController';
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
-import {
-    FieldGroup,
-    FieldLabel,
-    FieldSet,
-} from '@/components/ui/field';
+import { FieldGroup, FieldLabel, FieldSet } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, Head } from '@inertiajs/react';
