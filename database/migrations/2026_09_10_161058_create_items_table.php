@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
 
-            $table->string('code')->uniqid;
+            $table->string('code')->unique();
             $table->string('name');
             $table->string('category');
             $table->unsignedInteger('quantity')->default(0);

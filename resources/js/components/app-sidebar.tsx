@@ -12,9 +12,10 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard, inventory } from '@/routes';
-import type { NavItem } from '@/types';
 import { index as categoriesIndex } from '@/routes/categories';
+import { index as itemsIndex } from '@/routes/items';
+import { dashboard } from '@/routes';
+import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
     {
@@ -29,7 +30,7 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Inventory',
-        href: inventory(),
+        href: itemsIndex(),
         icon: Package,
     },
 ];
